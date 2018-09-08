@@ -5,4 +5,38 @@ function getUsers(){
   return users;
 }
 
-export { getUsers };
+// BUYERS (Buinesses) - ERC 20
+function getBalance(address){
+  return new Promise((resolve, reject) =>{
+    axios.get('dummyData.json')
+    .then((data) =>{
+      //const balance = data.data.value;
+      const matchingAccount = data.data.find((account)=>{
+        return account.address === address;
+      });
+      resolve(matchingAccount.value);
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
+}
+
+function buyCredits(){
+  return;
+}
+
+
+
+// SELLERS (Farmers) - ERC 721
+function getTokens(){
+  return;
+}
+
+function getTokenInfo(){
+  return;
+}
+
+// VALIDATORS
+
+export { getBalance, buyCredits, getTokens, getTokenInfo };
