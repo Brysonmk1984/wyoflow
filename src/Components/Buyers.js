@@ -10,15 +10,17 @@ export default class Buyers extends React.Component{
   }
 
   buyCredits(){
-    buyCredits(this.props.activeUser, this.props.offsetCrowdsale)
+    buyCredits(this.props.offsetCrowdsale, this.props.activeUser)
     .then((data) =>{
       console.log('Credits DATA', data);
     })
   }
 
   getBalance(){
-    getBalance(this.props.activeUser, this.props.offsetToken, this.props.web3)
+    getBalance(this.props.offsetToken, this.props.activeUser,  this.props.web3)
     .then((data) =>{
+
+      console.log('D', data);
         this.setState(()=>({
             balance : data
         }), () =>{
@@ -31,24 +33,16 @@ export default class Buyers extends React.Component{
   render(){
     return(
       <div>
-        <section id="title">
-          <h2> Hello, {this.props.activeUser}</h2>
-        </section>
         <section id="blockchainInteraction">
           <div>
-            <button onClick={ this.buyCredits.bind(this) }>
-                Buy Credits
-            </button>
-          </div>
-          <div>
-            <button onClick={ this.getBalance.bind(this) }>
-                Get Balance
-            </button>
+            <div className="account-title"><strong>Account:</strong><span>{this.props.activeUser}</span></div>
+            <button onClick={ this.buyCredits.bind(this) }>Buy Credits</button>
+            <button onClick={ this.getBalance.bind(this) }>Get Balance</button>
           </div>
         </section>
-        <section id="blockchainData" class={ this.state.balance ? 'show' : 'hide' }>
+        <section className={ this.state.balance ? 'show blockchain-data' : 'hide blockchain-data' }>
           <div>
-            Water Offset Token Balance : { this.state.balance }
+            Water Offset Token Balance : <strong>{ this.state.balance }</strong>
           </div>
         </section>
       </div>

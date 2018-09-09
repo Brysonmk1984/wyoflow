@@ -17,7 +17,6 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      // activeUser : '0x895B758229aFF6C0f95146A676bBF579aD7636aa',
       web3: null,
       accounts: ['0x0'],
       trackingToken: null,

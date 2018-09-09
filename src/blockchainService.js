@@ -1,17 +1,14 @@
 import axios from 'axios';
 
-function getUsers(){
-  const users = ['0x895B758229aFF6C0f95146A676bBF579aD7636aa', '0xe6680987f8893F130aa2313acacb2A5eDaa9CC2B', '0xB9ABCD42B1351F62615dc2fF023FE03673122DC4']
-  return users;
-}
 
 // BUYERS (Buinesses) - ERC 20
-function getBalance(address, offsetToken){
+function getBalance(offsetToken, address){
+  console.log('asd', offsetToken);
   return new Promise((resolve, reject) =>{
     
     offsetToken.balanceOf(address)
-    .then((result) => {
-        resolve(result.toString());
+    .then((result) =>{
+      resolve(result.toString());
     })
     .catch((err) =>{
       reject(err);
@@ -19,7 +16,7 @@ function getBalance(address, offsetToken){
   });
 }
 
-function buyCredits(address, offsetCrowdsale){
+function buyCredits(offsetCrowdsale, address){
   return new Promise((resolve, reject) =>{
     // axios.get('dummyData.json')
     offsetCrowdsale.buyTokens(address, {from:address, value:500})

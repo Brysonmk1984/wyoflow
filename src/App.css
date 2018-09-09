@@ -1,27 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 .App {
   text-align: center;
+  font-family: 'Raleway', sans-serif;
 }
-
+.App button{
+  background-color:rgb(254, 201, 107);
+  border-radius:0px;
+  border-color: rgb(254, 201, 107);
+  color: white;
+  padding:10px 20px;
+  font-size:1.5em;
+  display:inline-block;
+  margin-right:20px;
+  cursor:pointer;
+}
+.App button:hover{
+  background-color:transparent;
+  color: rgb(254, 201, 107);
+}
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  background-image: url('http://wyoflow.org/wp-content/uploads/2018/09/flow-long-logo-600-225.png');
+  background-repeat: no-repeat;
+  width: 600px;
+  height:225px;
+  margin: 0px auto;
 }
+.account-title{
 
+  display:inline-block;
+  margin-right:50px;
+  font-size:1.3em;
+}
 .App-header {
   background-color: #222;
-  height: 150px;
+  background-image: url('http://wyoflow.org/wp-content/uploads/2016/08/water-pic-2000-x-12000.jpg');
+  height: 225px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 22px;
+  line-height:60px;
+  background-color: #ed6967;
+  color:white;
+  margin-top:0px;
+  margin-bottom: 40px;
 }
 
+.blockchain-data{
+  padding-top:40px;
+  margin-top:40px;
+  font-size:1.5em;
+  background-color:rgb(238, 238, 238);
+  min-height:400px;
+  
+}
+.blockchain-data strong{
+  text-decoration:underline;
+  font-size:2em;
+  display:inline-block;
+  margin-left:20px;
+  
+}
 .show{
   display:block;
 }
@@ -29,6 +75,7 @@
 .hide{
   display:none;
 }
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
