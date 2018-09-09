@@ -1,5 +1,4 @@
 import React from 'react';
-import Maker from '@makerdao/dai';
 import { getBalance, buyCredits } from '../blockchainService';
 
 export default class Buyers extends React.Component{
@@ -11,21 +10,20 @@ export default class Buyers extends React.Component{
   }
 
   buyCredits(){
-    buyCredits(this.props.activeUser)
+    buyCredits(this.props.activeUser, this.props.offsetCrowdsale)
     .then((data) =>{
       console.log('Credits DATA', data);
     })
   }
 
   getBalance(){
-    getBalance(this.props.activeUser)
+    getBalance(this.props.activeUser, this.props.offsetToken, this.props.web3)
     .then((data) =>{
         this.setState(()=>({
             balance : data
         }), () =>{
           console.log('!!', this.state);
         });
-   
     })
   }
 
