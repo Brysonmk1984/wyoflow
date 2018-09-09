@@ -72,4 +72,4 @@ function mintToken(releaser, acreftReleased, streamInfo, destination, verifier, 
   });
 }
 // export { getBalance, buyCredits, getTokens, getTokenInfo };
-export { getBalance, buyCredits, mintToken };
+export { getBalance, buyCredits, getToken, mintToken };

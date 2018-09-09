@@ -9,9 +9,9 @@ import Validators from './Components/Validators';
 
 // Web3 and contracts
 import getWeb3 from './utils/getWeb3';
-import WaterTrackingToken from '/build/contracts/WaterTrackingToken.json';
-import WaterOffsetToken from '/build/contracts/WaterOffsetToken.json';
-import WaterOffsetCrowdsale from '/build/contracts/WaterOffsetCrowdsale.json';
+import WaterTrackingToken from '../build/contracts/WaterTrackingToken.json';
+import WaterOffsetToken from '../build/contracts/WaterOffsetToken.json';
+import WaterOffsetCrowdsale from '../build/contracts/WaterOffsetCrowdsale.json';
 
 class App extends Component {
   constructor(){
