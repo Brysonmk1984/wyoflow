@@ -3,7 +3,7 @@ const WaterOffsetCrowdsale = artifacts.require('./WaterOffsetCrowdsale.sol');
 const WaterTrackingToken = artifacts.require('./WaterTrackingToken.sol');
 
 module.exports = function(deployer, network, accounts) {
-    const verifier = accounts[1];
+    const verifier = accounts[0];
     deployer.deploy(WaterOffsetToken).then(() =>
         deployer.deploy(
             WaterTrackingToken,

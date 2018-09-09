@@ -60,21 +60,19 @@ function buyCredits(offsetCrowdsale, address){
 //   return;
 // }
 
-// // VALIDATORS
-// function mintToken(){
-//   return new Promise((resolve, reject) =>{
-//     axios.get('dummyData.json')
-//     .then((data) =>{
-//       //const balance = data.data.value;
-//       const matchingAccount = data.data.find((account)=>{
-//         return account.address === address;
-//       });
-//       resolve(matchingAccount.value);
-//     })
-//     .catch((err) =>{
-//       reject(err);
-//     })
-//   });
-// }
+// VALIDATORS
+function mintToken(releaser, acreftReleased, streamInfo, destination, verifier, trackingToken){
+  return new Promise((resolve, reject) =>{
+    console.log(trackingToken);
+    trackingToken.mintToken(releaser, acreftReleased, streamInfo, destination, {from:verifier})
+    .then((result) =>{
+      console.log(result)
+      // resolve(result);
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
+}
 // export { getBalance, buyCredits, getTokens, getTokenInfo };
-export { getBalance, buyCredits };
+export { getBalance, buyCredits, mintToken };

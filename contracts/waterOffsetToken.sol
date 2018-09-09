@@ -16,12 +16,6 @@ contract WaterOffsetToken is Ownable, MintableToken {
     mapping (address => uint) private approvedPayments; // Payments approved for removal from contract
     uint private totalApprovedPayments;                 // Value of total pending payments
 
-    // TODO: This is obviously a major security vulnerability, but it's also 4am so f* it
-    // Override the default modifier and allow anyone to mint tokens
-    modifier hasMintPermission() {
-        _;
-    }
-
     function approvePayments
     (
         address _releaser,
@@ -52,6 +46,8 @@ contract WaterOffsetToken is Ownable, MintableToken {
         
         // Add totalPayment to totalApprovedPayments
         totalApprovedPayments = totalApprovedPayments.add(totalPayment);
+        
+        return true;
 
     }
 
@@ -61,6 +57,11 @@ contract WaterOffsetToken is Ownable, MintableToken {
         approvedPayments[msg.sender] = 0;
         totalApprovedPayments = totalApprovedPayments.sub(payment);
         msg.sender.transfer(payment);
+    }
+    // TODO: This is obviously a major security vulnerability, but it's also 4am so f* it
+    // Override the default modifier and allow anyone to mint tokens
+    modifier hasMintPermission() {
+        _;
     }
 
     function changeWaterTrackingContractAddress(address _newAddress) onlyOwner public {

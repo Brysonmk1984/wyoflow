@@ -60,14 +60,6 @@ contract WaterTrackingToken is ERC721Token, Ownable {
         waterTracker[releaseCount].destination = _destination;
 
         return true;
-        // if (isThereEnoughMoney(totalPayment)) 
-        // {
-        //     approve _releaser to claim paymentAmount from ERC20 contract
-        // }
-        // ** also, pay additional funding amount out to verifier, or whatever conservation org.
-        // facilitated the transfer. Could have an addresses approvedConservationOrgs[];
-        // _mint a token;
-        // add waterTrackingStructInfo to whereIsTheWater[tokenId];
     }
 
     
