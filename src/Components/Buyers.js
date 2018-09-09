@@ -33,6 +33,7 @@ export default class Buyers extends React.Component{
   render(){
     return(
       <div>
+        <h1>Payors</h1>
         <section id="blockchainInteraction">
           <div>
             <div className="account-title"><strong>Account:</strong><span>{this.props.activeUser}</span></div>

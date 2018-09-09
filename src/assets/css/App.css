@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('../fonts/Montserrat-Medium.otf');
+  font-weight: normal;
+  font-style: normal;
+}
 .App {
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat-Medium', 'Raleway', sans-serif;
+
 }
 .App button{
   background-color:rgb(254, 201, 107);
@@ -38,6 +44,23 @@
   height: 225px;
   padding: 20px;
   color: white;
+}
+.App-header .links {
+  position:absolute;
+  top:0px;
+  right:0px;
+}
+.App-header ul li{
+  list-style:none;
+  display:inline-block;
+  padding:10px;
+}
+.App-header ul li a{
+  color:white;
+  text-decoration:none;
+}
+.App-header ul li a:hover{
+  color:rgb(254, 201, 107);
 }
 
 .App-title {
@@ -76,7 +99,12 @@
   display:none;
 }
 
-
+h1{
+  border-bottom: solid 2px rgb(254, 201, 107);
+  width:50%;
+  margin:30px auto;
+  padding-bottom:30px;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
