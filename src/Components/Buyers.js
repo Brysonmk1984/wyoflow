@@ -10,20 +10,22 @@ export default class Buyers extends React.Component{
   }
 
   buyCredits(){
-    buyCredits(this.props.activeUser, this.props.offsetCrowdsale)
+    buyCredits(this.props.offsetCrowdsale, this.props.activeUser)
     .then((data) =>{
       console.log('Credits DATA', data);
     })
   }
 
   getBalance(){
-    getBalance(this.props.activeUser, this.props.offsetToken, this.props.web3)
+    getBalance(this.props.offsetToken, this.props.activeUser,  this.props.web3)
     .then((data) =>{
-        this.setState(()=>({
-            balance : data
-        }), () =>{
-          console.log('!!', this.state);
-        });
+
+      console.log('D', data);
+        // this.setState(()=>({
+        //     balance : data
+        // }), () =>{
+        //   console.log('!!', this.state);
+        // });
     })
   }
 
@@ -46,7 +48,7 @@ export default class Buyers extends React.Component{
             </button>
           </div>
         </section>
-        <section id="blockchainData" class={ this.state.balance ? 'show' : 'hide' }>
+        <section id="blockchainData" className={ this.state.balance ? 'show' : 'hide' }>
           <div>
             Water Offset Token Balance : { this.state.balance }
           </div>
