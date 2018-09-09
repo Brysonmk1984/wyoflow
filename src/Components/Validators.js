@@ -16,6 +16,8 @@ export default class Validators extends React.Component{
           <div>
             <div className="account-title"><strong>Account:</strong><span>{this.props.activeUser}</span></div>
             <button onClick={ this.mintToken.bind(this) }>Verify a Release</button>
+          </div>
+        </section>
       </div>
     );
   }
