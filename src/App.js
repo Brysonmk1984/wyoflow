@@ -60,19 +60,6 @@ class App extends Component {
     const offsetCrowdsale = contract(WaterOffsetCrowdsale)
     offsetCrowdsale.setProvider(this.state.web3.currentProvider)
 
-    // // Deploy contracts
-    // offsetToken.deployed().then((offsetTokenInstance) => {
-    //   trackingToken.deployed().then((trackingTokenInstance) => {
-    //     offsetCrowdsale.deployed().then((offsetCrowdsaleInstance) => {
-    //       this.setState({
-    //         trackingToken: trackingTokenInstance,
-    //         offsetToken: offsetTokenInstance,
-    //         offsetCrowdsale: offsetCrowdsaleInstance,
-    //       })
-    //     })
-    //   })
-    // })
-
     // Get accounts
     this.state.web3.eth.getAccounts((error, accounts) => { 
       // Deploy contracts
