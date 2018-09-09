@@ -8,15 +8,9 @@ function getUsers(){
 // BUYERS (Buinesses) - ERC 20
 function getBalance(address, offsetToken){
   return new Promise((resolve, reject) =>{
-    // axios.get('dummyData.json')
+    
     offsetToken.balanceOf(address)
-    .then((result) =>{
-      //const balance = data.data.value;
-    //   const matchingAccount = data.data.find((account)=>{
-    //     return account.address === address;
-    //   });
-    //   resolve(matchingAccount.value);
-
+    .then((result) => {
         resolve(result.toString());
     })
     .catch((err) =>{
@@ -30,11 +24,6 @@ function buyCredits(address, offsetCrowdsale){
     // axios.get('dummyData.json')
     offsetCrowdsale.buyTokens(address, {from:address, value:500})
     .then((data) =>{
-      //const balance = data.data.value;
-    //   const matchingAccount = data.data.find((account)=>{
-    //     return account.address === address;
-    //   });
-    //   resolve(matchingAccount.value);
         console.log(data);
     })
     .catch((err) =>{
