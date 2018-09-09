@@ -10,7 +10,7 @@ export default class Buyers extends React.Component{
   }
 
   buyCredits(){
-    buyCredits()
+    buyCredits(this.props.activeUser)
     .then((data) =>{
       console.log('Credits DATA', data);
     })
@@ -19,9 +19,10 @@ export default class Buyers extends React.Component{
   getBalance(){
     getBalance(this.props.activeUser)
     .then((data) =>{
-        console.log('BALANCE DATA', data);
-        this.setState(()=>{
-          balance : data
+        this.setState(()=>({
+            balance : data
+        }), () =>{
+          console.log('!!', this.state);
         });
    
     })
@@ -46,8 +47,10 @@ export default class Buyers extends React.Component{
             </button>
           </div>
         </section>
-        <section id="blockchainData">
-        
+        <section id="blockchainData" class={ this.state.balance ? 'show' : 'hide' }>
+          <div>
+            Water Offset Token Balance : { this.state.balance }
+          </div>
         </section>
       </div>
     );

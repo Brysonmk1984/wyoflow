@@ -22,21 +22,67 @@ function getBalance(address){
   });
 }
 
-function buyCredits(){
-  return;
+function buyCredits(address){
+  return new Promise((resolve, reject) =>{
+    axios.get('dummyData.json')
+    .then((data) =>{
+      //const balance = data.data.value;
+      const matchingAccount = data.data.find((account)=>{
+        return account.address === address;
+      });
+      resolve(matchingAccount.value);
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
 }
 
 
 
 // SELLERS (Farmers) - ERC 721
-function getTokens(){
-  return;
+function getToken(address){
+  return new Promise((resolve, reject) =>{
+    // first get token array of user
+    axios.get('dummyData.json')
+    .then((data) =>{
+      // then get specific token by id 
+      axios.get('dummyData.json')
+      .then(() =>{
+        //const balance = data.data.value;
+        const matchingAccount = data.data.find((account)=>{
+          return account.address === address;
+        });
+        resolve(matchingAccount.value);
+      })
+      .catch((err) =>{
+        reject(err);
+      })
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
 }
 
-function getTokenInfo(){
+function claimPayment(){
   return;
 }
 
 // VALIDATORS
-
+function mintToken(){
+  return new Promise((resolve, reject) =>{
+    axios.get('dummyData.json')
+    .then((data) =>{
+      //const balance = data.data.value;
+      const matchingAccount = data.data.find((account)=>{
+        return account.address === address;
+      });
+      resolve(matchingAccount.value);
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
+}
 export { getBalance, buyCredits, getTokens, getTokenInfo };
