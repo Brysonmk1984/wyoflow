@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './assets/css/App.css';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Subheader from './Components/Subheader';
@@ -90,7 +90,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() => <Buyers activeUser={ this.state.accounts[0] } web3={ this.state.web3 } offsetToken={ this.state.offsetToken } offsetCrowdsale={ this.state.offsetCrowdsale }/>}  />
           <Route path='/buyers'  render={() => <Buyers activeUser={ this.state.accounts[0] } web3={ this.state.web3 } offsetToken={ this.state.offsetToken } offsetCrowdsale={ this.state.offsetCrowdsale }/>} />
-          <Route path='/sellers'  render={() => <Sellers activeUser={ this.state.accounts[0] }/>} />
+          <Route path='/sellers'  render={() => <Sellers activeUser={ this.state.accounts[0] } web3={ this.state.web3 } trackingToken={ this.state.trackingToken } offsetToken={ this.state.offsetToken } offsetCrowdsale={ this.state.offsetCrowdsale } />} />
           <Route path='/validators'  render={() => <Validators activeUser={ this.state.accounts[0] } web3={ this.state.web3 } trackingToken={ this.state.trackingToken }/>} />
         </Switch>
       </div>

@@ -1,34 +1,55 @@
 import React from 'react';
-import { getToken, mintToken } from '../blockchainService';
+import { getToken, claimPayment } from '../blockchainService';
 
 export default class Sellers extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      balance : 0
+    };
+  }
+
+  getToken(){
+    getToken(this.props.trackingToken, this.props.activeUser,  this.props.web3)
+    .then((data) =>{
+
+      console.log('D', data);
+        this.setState(()=>({
+            balance : data
+        }), () =>{
+          console.log('!!', this.state);
+        });
+    })
+  }
+
+  claimPayment(){
+    getToken(this.props.trackingToken, this.props.activeUser,  this.props.web3)
+    .then((data) =>{
+
+      console.log('D', data);
+        this.setState(()=>({
+            balance : data
+        }), () =>{
+          console.log('!!', this.state);
+        });
+    })
+  }
+
   render(){
     return(
       <div>
-        <section id="title">
-          <h2> Hello, S</h2>
-        </section>
+        <h1>Conservers</h1>
         <section id="blockchainInteraction">
           <div>
-            <button>
-                Get Users
-            </button>
-          </div>
-          <div>
-            <input type="text" placeholder="enter address" />
-            <button>Get user tokens</button>
-          </div>
-          <div>
-            <input type="text" placeholder="enter address"  />
-            <button>Transfer ERC 20</button>
-          </div>
-          <div>
-            <input type="text" placeholder="enter address" />
-            <button>Transfer ERC 721</button>
+            <div className="account-title"><strong>Account:</strong><span>{this.props.activeUser}</span></div>
+            <button onClick={ this.getToken.bind(this) }>Get Token</button>
+            <button onClick={ this.claimPayment.bind(this) }>Claim Payment</button>
           </div>
         </section>
-        <section id="blockchainData">
-        
+        <section className={ this.state.balance ? 'show blockchain-data' : 'hide blockchain-data' }>
+          <div>
+            Water Offset Token Balance : <strong>{ this.state.balance }</strong>
+          </div>
         </section>
       </div>
     );

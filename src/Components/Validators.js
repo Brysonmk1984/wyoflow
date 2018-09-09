@@ -10,14 +10,12 @@ export default class Validators extends React.Component{
     return(
       <div>
         <section id="title">
-          <h2> Hello, Validator</h2>
+          <h1>Validators</h1>
         </section>
         <section id="blockchainInteraction">
           <div>
             <div className="account-title"><strong>Account:</strong><span>{this.props.activeUser}</span></div>
             <button onClick={ this.mintToken.bind(this) }>Verify a Release</button>
-          </div>
-        </section>
       </div>
     );
   }
