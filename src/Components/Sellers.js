@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTokens, getTokenInfo } from '../blockchainService';
+import { getToken, mintToken } from '../blockchainService';
 
 export default class Sellers extends React.Component{
   render(){
