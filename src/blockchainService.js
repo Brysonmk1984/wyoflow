@@ -28,22 +28,23 @@ function buyCredits(offsetCrowdsale, address){
 
 
 // // SELLERS (Farmers) - ERC 721
-function getToken(trackingToken){
+function getToken(trackingToken, address){
+  console.log('TT', trackingToken);
   return new Promise((resolve, reject) =>{
     // first get token array of user
-    trackingToken.balanceOf.then((data) =>{
+    trackingToken.balanceOf(address).then((data) =>{
+      let index = data.toString();
+      console.log('DATA', index, trackingToken.tokenOfOwnerByIndex);
       // then get specific token by id 
-      console.log('DATA', data);
-      // .then(() =>{
-      //   //const balance = data.data.value;
-      //   const matchingAccount = data.data.find((account)=>{
-      //     return account.address === address;
-      //   });
-      //   resolve(matchingAccount.value);
-      // })
-      // .catch((err) =>{
-      //   reject(err);
-      // })
+      trackingToken.tokenOfOwnerByIndex(address, index)
+      .then((data) =>{
+        console.log('DDD', data);
+        //resolve(matchingAccount.value);
+      })
+      .catch((err) =>{
+        reject(err);
+      })
+      
     })
     .catch((err) =>{
       reject(err);

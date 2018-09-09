@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "./waterOffsetToken.sol";
+import "./WaterOffsetToken.sol";
 import "openzeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 

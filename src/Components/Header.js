@@ -8,9 +8,9 @@ export default class Header extends React.Component{
         <div className="App-logo"></div>
         <div className="links">
           <ul>
-            <li><Link  to={`/buyers`} activeClassName="active">Payors</Link></li>
-            <li><Link  to={`/sellers`} activeClassName="active">Conservors</Link></li>
-            <li><Link  to={`/validators`} activeClassName="active">Validators</Link></li>
+            <li><Link  to={`/buyers`} activeclassname="active">Payors</Link></li>
+            <li><Link  to={`/sellers`} activeclassname="active">Conservors</Link></li>
+            <li><Link  to={`/validators`} activeclassname="active">Validators</Link></li>
           </ul>
         </div>
       </header>
