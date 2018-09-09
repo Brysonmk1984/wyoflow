@@ -1,4 +1,5 @@
 import React from 'react';
+import Maker from '@makerdao/dai';
 import { getBalance, buyCredits } from '../blockchainService';
 
 export default class Buyers extends React.Component{

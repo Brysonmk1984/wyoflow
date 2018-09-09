@@ -1,17 +1,19 @@
-const waterOffsetToken = artifacts.require('./waterOffsetToken.sol');
-const waterOffsetCrowdsale = artifacts.require('./waterOffsetCrowdsale.sol');
+const WaterOffsetToken = artifacts.require('./WaterOffsetToken.sol');
+const WaterOffsetCrowdsale = artifacts.require('./WaterOffsetCrowdsale.sol');
+const WaterTrackingToken = artifacts.require('./WaterTrackingToken.sol');
 
-module.exports = function(deployer, accounts) {
-    const wallet = accounts[1]
-    return deployer
-        .then(() => {
-            return deployer.deploy(waterOffsetToken);
-        })
-        .then(() => {
+module.exports = function(deployer, network, accounts) {
+    const verifier = accounts[1];
+    deployer.deploy(WaterOffsetToken).then(() => {
+        deployer.deploy(
+            WaterTrackingToken,
+            verifier,
+            WaterOffsetToken.address
+        ).then(() => {
             return deployer.deploy(
-                waterOffsetCrowdsale,
-                wallet,
-                waterOffsetToken.address
-            )
+                WaterOffsetCrowdsale,
+                WaterOffsetToken.address
+            );
         })
+    });
 };
