@@ -6,31 +6,36 @@ function getUsers(){
 }
 
 // BUYERS (Buinesses) - ERC 20
-function getBalance(address){
+function getBalance(address, offsetToken){
   return new Promise((resolve, reject) =>{
-    axios.get('dummyData.json')
+    // axios.get('dummyData.json')
+    offsetToken.balanceOf(address)
+    .then((result) =>{
+      //const balance = data.data.value;
+    //   const matchingAccount = data.data.find((account)=>{
+    //     return account.address === address;
+    //   });
+    //   resolve(matchingAccount.value);
+
+        resolve(result.toString());
+    })
+    .catch((err) =>{
+      reject(err);
+    })
+  });
+}
+
+function buyCredits(address, offsetCrowdsale){
+  return new Promise((resolve, reject) =>{
+    // axios.get('dummyData.json')
+    offsetCrowdsale.buyTokens(address, {from:address, value:500})
     .then((data) =>{
       //const balance = data.data.value;
-      const matchingAccount = data.data.find((account)=>{
-        return account.address === address;
-      });
-      resolve(matchingAccount.value);
-    })
-    .catch((err) =>{
-      reject(err);
-    })
-  });
-}
-
-function buyCredits(address){
-  return new Promise((resolve, reject) =>{
-    axios.get('dummyData.json')
-    .then((data) =>{
-      //const balance = data.data.value;
-      const matchingAccount = data.data.find((account)=>{
-        return account.address === address;
-      });
-      resolve(matchingAccount.value);
+    //   const matchingAccount = data.data.find((account)=>{
+    //     return account.address === address;
+    //   });
+    //   resolve(matchingAccount.value);
+        console.log(data);
     })
     .catch((err) =>{
       reject(err);
@@ -40,49 +45,50 @@ function buyCredits(address){
 
 
 
-// SELLERS (Farmers) - ERC 721
-function getToken(address){
-  return new Promise((resolve, reject) =>{
-    // first get token array of user
-    axios.get('dummyData.json')
-    .then((data) =>{
-      // then get specific token by id 
-      axios.get('dummyData.json')
-      .then(() =>{
-        //const balance = data.data.value;
-        const matchingAccount = data.data.find((account)=>{
-          return account.address === address;
-        });
-        resolve(matchingAccount.value);
-      })
-      .catch((err) =>{
-        reject(err);
-      })
-    })
-    .catch((err) =>{
-      reject(err);
-    })
-  });
-}
+// // SELLERS (Farmers) - ERC 721
+// function getToken(address){
+//   return new Promise((resolve, reject) =>{
+//     // first get token array of user
+//     axios.get('dummyData.json')
+//     .then((data) =>{
+//       // then get specific token by id 
+//       axios.get('dummyData.json')
+//       .then(() =>{
+//         //const balance = data.data.value;
+//         const matchingAccount = data.data.find((account)=>{
+//           return account.address === address;
+//         });
+//         resolve(matchingAccount.value);
+//       })
+//       .catch((err) =>{
+//         reject(err);
+//       })
+//     })
+//     .catch((err) =>{
+//       reject(err);
+//     })
+//   });
+// }
 
-function claimPayment(){
-  return;
-}
+// function claimPayment(){
+//   return;
+// }
 
-// VALIDATORS
-function mintToken(){
-  return new Promise((resolve, reject) =>{
-    axios.get('dummyData.json')
-    .then((data) =>{
-      //const balance = data.data.value;
-      const matchingAccount = data.data.find((account)=>{
-        return account.address === address;
-      });
-      resolve(matchingAccount.value);
-    })
-    .catch((err) =>{
-      reject(err);
-    })
-  });
-}
-export { getBalance, buyCredits, getTokens, getTokenInfo };
+// // VALIDATORS
+// function mintToken(){
+//   return new Promise((resolve, reject) =>{
+//     axios.get('dummyData.json')
+//     .then((data) =>{
+//       //const balance = data.data.value;
+//       const matchingAccount = data.data.find((account)=>{
+//         return account.address === address;
+//       });
+//       resolve(matchingAccount.value);
+//     })
+//     .catch((err) =>{
+//       reject(err);
+//     })
+//   });
+// }
+// export { getBalance, buyCredits, getTokens, getTokenInfo };
+export { getBalance, buyCredits };
