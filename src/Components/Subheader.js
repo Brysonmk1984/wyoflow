@@ -4,7 +4,7 @@ export default class Subheader extends React.Component{
   render(){
     return(
       <p className="App-intro">
-        A platform incentivizing water conservation and rehabilitation.
+        The first water footprint offset credits on the blockchain using Ethereum
       </p>
     );
   }
