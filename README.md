@@ -2,7 +2,7 @@ WyoFlow was built at the 2018 WyoHackathon. The project provides a utility token
 
 ## Setup and Usage
 
-#### If you do not have truffle and ganache-cli installed already, run:
+### If you do not have truffle and ganache-cli installed already, run:
 1. ```npm install -g truffle```
 2. ```npm install -g ganache-cli```
 
@@ -11,7 +11,7 @@ WyoFlow was built at the 2018 WyoHackathon. The project provides a utility token
 2. `cd ./wyoflow`
 3. `npm install`
 
-## To run dev blockchain and server:
+### To run dev blockchain and server:
 1. `ganache-cli`  
 In a separate terminal window: 
 2. `truffle migrate --compile-all --reset`
