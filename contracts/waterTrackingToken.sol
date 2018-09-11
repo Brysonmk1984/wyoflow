@@ -3,18 +3,15 @@ pragma solidity ^0.4.24;
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./WaterOffsetToken.sol";
+// import "./WaterOffsetToken.sol";
+import "./Wallet.sol";
 
-// TODO: remove old code
-// contract WaterOffsetInterface {
-//     function approvePayments
-//     (
-//         uint _releaserPayment, 
-//         uint _verifierPayment
-//     ) 
-//     public returns (bool) 
-//     {}
-// }
+// TODO: 
+// - change mint permissions
+// - check/fix mintToken function in this contract
+// - Balance of all contract accounts == 0 even after purchasing tokens??
+// - change migrations to auto-set waterTrackingContract address
+// - add Dai integration
 
 contract WaterTrackingToken is ERC721Token, Ownable {
     using SafeMath for uint;
@@ -23,13 +20,14 @@ contract WaterTrackingToken is ERC721Token, Ownable {
     uint public RELEASERPAYMENTPERACREFT = 1;   // How much to pay releaser per acre-ft of water released (in Wei)
     uint public VERIFIERPAYMENTPERACREFT = 1;   // How much to compensate the verifier for negotiating water release (in Wei)
     uint releaseCount;                            // Releases made (to be incremented and used for tokenIds)
-    WaterOffsetToken private waterOffsetTokenContract;
+    // WaterOffsetToken public waterOffsetTokenContract;
+    Wallet public walletContract;
     
-    constructor(address _verifier, address _waterOffsetContractAddress) ERC721Token("WaterTrackingNFT", "WTT") public {
+    constructor(address _verifier, address _walletContractAddress) ERC721Token("WaterTrackingNFT", "WTT") public {
         require(_verifier != address(0), "Verifier address cannot be empty");
-        require(_waterOffsetContractAddress != address(0), "Water offset contract address cannot be empty");
+        require(_walletContractAddress != address(0), "Water offset contract address cannot be empty");
         verifier = _verifier;
-        waterOffsetTokenContract = WaterOffsetToken(_waterOffsetContractAddress);
+        walletContract = Wallet(_walletContractAddress);
     }
 
     struct WaterRelease {
@@ -51,7 +49,7 @@ contract WaterTrackingToken is ERC721Token, Ownable {
         require (msg.sender == verifier);
         uint releaserPayment = _acreftReleased.mul(RELEASERPAYMENTPERACREFT);
         uint verifierPayment = _acreftReleased.mul(VERIFIERPAYMENTPERACREFT);
-        waterOffsetTokenContract.approvePayments(_releaser, msg.sender, releaserPayment, verifierPayment);
+        walletContract.approvePayments(_releaser, msg.sender, releaserPayment, verifierPayment);
         releaseCount = releaseCount.add(1);
         _mint(_releaser, releaseCount);
 

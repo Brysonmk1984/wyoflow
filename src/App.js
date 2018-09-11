@@ -82,10 +82,6 @@ class App extends Component {
               trackingToken: trackingTokenInstance,
               offsetToken: offsetTokenInstance,
               offsetCrowdsale: offsetCrowdsaleInstance,
-            }, () => {
-              // IMPORTANT: don't take this out. Needed to correctly deploy interdependent token contracts
-              // Set the waterTrackingContractAddress variable in the WaterOffsetToken contract
-              this.state.offsetToken.changeWaterTrackingContractAddress(this.state.trackingToken.address, {from: accounts[0]});
             })
           })
         })

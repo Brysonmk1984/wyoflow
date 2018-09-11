@@ -10,12 +10,11 @@ contract WaterOffsetCrowdsale is MintedCrowdsale {
 
     using SafeMath for uint;
     // TODO: FIX RATE
-    uint RATE = 1;
-    // address wallet = ; 
+    uint RATE = 1; 
     
-    constructor(MintableToken _waterOffsetToken) 
+    constructor(address _wallet, MintableToken _waterOffsetToken) 
         public 
-        Crowdsale(RATE, msg.sender, _waterOffsetToken)
+        Crowdsale(RATE, _wallet, _waterOffsetToken)
     {}
 
 }
