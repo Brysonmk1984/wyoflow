@@ -7,7 +7,7 @@ WyoFlow was built at the 2018 WyoHackathon. The project provides a utility token
 2. ```npm install -g ganache-cli```
 
 ### Once truffle and ganache-cli are installed, run:
-1. `git clone ...`
+1. `git clone https://github.com/nward13/wyoflow.git`
 2. `cd ./wyoflow`
 3. `npm install`
 
