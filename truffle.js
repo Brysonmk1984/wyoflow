@@ -9,6 +9,11 @@ module.exports = {
       port: 8545,
       network_id: "*", // match any network
     },
+    developmentWithDai: {
+      host: "127.0.0.1",
+      port: 2000,
+      network_id: "*", // match any network
+    }
     kovan: {
       // TODO: highly inseccure
       host: "https://kovan.infura.io/v3/5e47e88b288e435e99222e75f7d990d6",
