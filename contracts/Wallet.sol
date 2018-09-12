@@ -18,8 +18,8 @@ contract Wallet is Ownable {
     // deployment. (See ../migrations/2_deploy_contracts)
     address public waterTrackingTokenContractAddress;
 
-    mapping (address => uint) private approvedPayments; // Payments approved for removal from contract
-    uint private totalApprovedPayments;                 // Total amount of payments approved but not yet claimed
+    mapping (address => uint) internal approvedPayments; // Payments approved for removal from contract
+    uint internal totalApprovedPayments;                 // Total amount of payments approved but not yet claimed
 
     /**
     * @dev fallback function

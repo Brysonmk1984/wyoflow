@@ -11,6 +11,11 @@ WyoFlow was built at the 2018 WyoHackathon. The project provides a utility token
 2. `cd ./wyoflow`
 3. `npm install`
 
+### To test contracts:
+1. `ganache-cli`  
+In a separate terminal window: 
+2. `truffle test`
+
 ### To run dev blockchain and server:
 1. `ganache-cli`  
 In a separate terminal window: 

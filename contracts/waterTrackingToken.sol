@@ -24,7 +24,7 @@ contract WaterTrackingToken is ERC721Token, Ownable {
     uint public VERIFIERPAYMENTPERACREFT = 1;     // How much to compensate the verifier for negotiating water release (in Wei)
     uint releaseCount;                            // Releases made (to be incremented and used for tokenIds)
 
-    mapping (uint => WaterRelease) waterTracker;    // tokenId => waterReleas, keep track of each release and banked water
+    mapping (uint => WaterRelease) public waterTracker;    // tokenId => waterReleas, keep track of each release and banked water
 
     struct WaterRelease {
         uint acreftReleased;    // How much water was released from the water right
@@ -107,6 +107,14 @@ contract WaterTrackingToken is ERC721Token, Ownable {
         acreftReleased = waterTracker[_tokenId].acreftReleased;
         streamInfo = waterTracker[_tokenId].streamInfo;
         destination = waterTracker[_tokenId].destination;
+    }
+
+    /**
+    * @dev Changes the approved verifier
+    * @param _newVerifier The address of the new approved verifier
+    */
+    function changeApprovedVerifier(address _newVerifier) public onlyOwner returns (bool) {
+        verifier = _newVerifier;
     }
 
 }

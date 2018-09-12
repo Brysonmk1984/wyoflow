@@ -4,7 +4,7 @@ const WaterTrackingToken = artifacts.require('./WaterTrackingToken.sol');
 const Wallet = artifacts.require('./Wallet.sol');
 
 module.exports = function(deployer, network, accounts) {
-    const owner = accounts[0]
+    const owner = accounts[0];
     const verifier = accounts[0];
     var waterOffsetTokenInst;
     deployer.deploy(Wallet).then((walletInst) =>

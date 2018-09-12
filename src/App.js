@@ -12,6 +12,7 @@ import getWeb3 from './utils/getWeb3';
 import WaterTrackingToken from '../build/contracts/WaterTrackingToken.json';
 import WaterOffsetToken from '../build/contracts/WaterOffsetToken.json';
 import WaterOffsetCrowdsale from '../build/contracts/WaterOffsetCrowdsale.json';
+import Wallet from '../build/contracts/Wallet.json';
 
 class App extends Component {
   constructor(){
@@ -22,6 +23,7 @@ class App extends Component {
       trackingToken: null,
       offsetToken: null,
       offsetCrowdsale: null,
+      wallet: null,
     };
   }
 
@@ -32,17 +34,12 @@ class App extends Component {
       })
       this.instantiateContracts();
     })
-    .catch(() => {
+    .catch((error) => {
       console.log("Error finding web3.")
+      console.log(error)
     })
   }
 
-  componentDidMount(){
-
-    //////////////////
-    // IMPORTANT TODO: Need to set waterTokenContractAddress in WaterOffsetToken contract after all contracts deployed
-
-  }
 
   instantiateContracts() {
     const contract = require('truffle-contract');
@@ -59,29 +56,24 @@ class App extends Component {
     const offsetCrowdsale = contract(WaterOffsetCrowdsale)
     offsetCrowdsale.setProvider(this.state.web3.currentProvider)
 
-    // // Deploy contracts
-    offsetToken.deployed().then((offsetTokenInstance) => {
-      trackingToken.deployed().then((trackingTokenInstance) => {
-        offsetCrowdsale.deployed().then((offsetCrowdsaleInstance) => {
-          this.setState({
-            trackingToken: trackingTokenInstance,
-            offsetToken: offsetTokenInstance,
-            offsetCrowdsale: offsetCrowdsaleInstance,
-          })
-        })
-      })
-    })
+    // Instantiate Wallet contract
+    const wallet = contract(Wallet)
+    wallet.setProvider(this.state.web3.currentProvider)
+
     // Get accounts
     this.state.web3.eth.getAccounts((error, accounts) => { 
       // Deploy contracts
       offsetToken.deployed().then((offsetTokenInstance) => {
         trackingToken.deployed().then((trackingTokenInstance) => {
           offsetCrowdsale.deployed().then((offsetCrowdsaleInstance) => {
-            this.setState({
-              accounts: accounts,
-              trackingToken: trackingTokenInstance,
-              offsetToken: offsetTokenInstance,
-              offsetCrowdsale: offsetCrowdsaleInstance,
+            wallet.deployed().then((walletContractInstance) => {
+              this.setState({
+                accounts: accounts,
+                trackingToken: trackingTokenInstance,
+                offsetToken: offsetTokenInstance,
+                offsetCrowdsale: offsetCrowdsaleInstance,
+                wallet: walletContractInstance,
+              })
             })
           })
         })
