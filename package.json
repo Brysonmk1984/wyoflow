@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@makerdao/dai": "^0.7.1",
     "ajv": "^6.0.0",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",

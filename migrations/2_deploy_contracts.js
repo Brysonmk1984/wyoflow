@@ -20,16 +20,17 @@ module.exports = function(deployer, network, accounts) {
                 WaterOffsetCrowdsale,
                 Wallet.address,
                 WaterOffsetToken.address
-            )
+            ).then(() => {
+                return waterOffsetTokenInst.transferOwnership(
+                    WaterOffsetCrowdsale.address,
+                    {from:owner} 
+                );
+            })
         })
         .then(() => {
             walletInst.changeWaterTrackingTokenContractAddress(
                 WaterTrackingToken.address,
                 {from:owner}
-            );
-            return waterOffsetTokenInst.transferOwnership(
-                WaterOffsetCrowdsale.address,
-                {from:owner} 
             );
         })
     );

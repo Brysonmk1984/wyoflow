@@ -1,4 +1,5 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
+// Test account. Please don't steal our Kovan ETH. But, if you do, props to you for digging through random github repos for testnet ETH
 var mnemonic = "earn upon urban cannon inspire topic seven call soda menu sport carbon";
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -7,11 +8,6 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 8545,
-      network_id: "*", // match any network
-    },
-    developmentWithDai: {
-      host: "127.0.0.1",
-      port: 2000,
       network_id: "*", // match any network
     },
     kovan: {
