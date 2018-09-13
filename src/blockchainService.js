@@ -53,6 +53,7 @@ function getToken(trackingToken, address){
 }
 
 function claimPayment(){
+  // TODO: need to claim payments from Wallet contract
   return;
 }
 

@@ -23,6 +23,7 @@ export default class Sellers extends React.Component{
   }
 
   claimPayment(){
+    // TODO: need to claim payments from Wallet contract
     getToken(this.props.trackingToken, this.props.activeUser,  this.props.web3)
     .then((data) =>{
 
