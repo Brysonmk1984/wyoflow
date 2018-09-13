@@ -21,6 +21,7 @@ In a separate terminal window:
 In a separate terminal window: 
 2. `truffle migrate --compile-all --reset`
 3. `npm run start`
+4. Make sure MetaMask is connected to Localhost 8545, and restore accounts from seed phrase given by ganache-cli.
 
 Corporations, NGOs, State Governments, and others have sponsored water restoration activities, including Wyoming’s recent investment of $2.2 million on a 2018 pilot program. Corporations such as New Belgium, InBev, Intel, Green Mountain Coffee, and others use Water Offset Credits to minimize their water footprint and achieve water stewardship goals. Water rights holders receive payments for the release of their water back into critical dewatered ecosystems. Water Offset Credits are certified by organizations such as the National Fish and Wildlife Foundation. However, current water restoration credit exchanges rely on multiple intermediaries and have significant inefficiencies.
 
